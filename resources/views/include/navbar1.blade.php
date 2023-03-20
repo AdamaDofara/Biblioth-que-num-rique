@@ -8,7 +8,7 @@
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
           <span class="ti-layout-grid2"></span>
         </button>
-        <ul class="navbar-nav mr-lg-2">
+        <ul class="navbar-nav mr-lg-f2">
           <li class="nav-item nav-search d-none d-lg-block">
             <div class="input-group">
             </div>

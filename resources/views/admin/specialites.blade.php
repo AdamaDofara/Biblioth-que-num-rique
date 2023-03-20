@@ -5,6 +5,12 @@
 
 @section('contenu')
       <div class="card">
+      @if (Session::has('status'))
+            <div class ="alert alert-success">
+              {{Session::get('status')}}
+              {{Session::put('status', null)}}
+            </div>
+      @endif
         @if (Session::has('message'))
               <div class ="alert alert-success">
                 {{Session::get('message')}}
@@ -34,10 +40,9 @@
                             <label class="badge badge-info">On hold</label>
                             </td> --}}
                             <td>
-                            <a href="#" class="btn btn-outline-primary">Modifier</a>
-                            <button class="btn btn-outline-danger"><a href="#"  id="supprimer">Supprimer</a></button>
-                           {{-- <button class="btn btn-outline-primary" onclick="window.location = '{{URL::to('/modifier/'{$categorie->id})}}'">Modifier</button> --}}
-                            {{-- <button class="btn btn-outline-danger">Supprimer</button>  --}}
+                            <a href="{{url('/supprimer_specialite/'.$specialite->id)}}" class="btn btn-outline-danger" id="supprimer">Supprimer</a>
+                           <!-- {{-- <button class="btn btn-outline-primary" onclick="window.location = '{{URL::to('/modifier/'{$categorie->id})}}'">Modifier</button> --}}
+                            {{-- <button class="btn btn-outline-danger">Supprimer</button>  --}} -->
                           </td>
                       </tr>
                         @endforeach

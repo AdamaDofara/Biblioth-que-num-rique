@@ -69,10 +69,11 @@
 					</div>
 
 					<div class="contact100-form-checkbox">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-						<label class="label-checkbox100" for="ckb1">
-							Se souvenir de moi
-						</label>
+						<div class="text-center">
+							<a class="txt1" href="{{url('/nouveau_mot_de_passe')}}">
+								Mot de passe obulié ?
+							</a>
+						</div>
 					</div>
 
 					<div class="container-login100-form-btn">

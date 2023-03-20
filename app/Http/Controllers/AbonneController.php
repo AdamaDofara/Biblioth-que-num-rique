@@ -19,7 +19,7 @@ class AbonneController extends Controller
 
     public function Accueil(){
         $categories = Categorie::get();
-        $ouvrages = Ouvrage::paginate(4);
+        $ouvrages = Ouvrage::where("statut", 1)->paginate(4);
         // return view ('accueil', ['categories',$categories]);
         return view('accueil', ['categories'=>$categories, 'ouvrages'=>$ouvrages]);
 }
@@ -27,6 +27,10 @@ class AbonneController extends Controller
 public function inscription(Request $request){
     $roles = Role::all();
     return view('inscription_utilisateur', ['roles'=>$roles]);
+}
+
+public function Mot_de_passe(Request $request){
+    return view('mot_de_passe');
 }
 
 public function creer_utilisateur(Request $req){
@@ -202,10 +206,11 @@ public function getEmpruntEncours(){
 public function getEmpruntTermine(){
     if (Session::get('user')->role->role=="ADMIN") {
         $emprunts = Emprunt::where('statut', "Termine")->get();
+        
         return view('abonne.empruntsTermine', ['emprunts'=>$emprunts]);
     } else {
         $emprunts = Emprunt::where('statut',"Termine")->where('user_id',Session::get('user')->id)->get();
-        return view('abonne.empruntsEncours', ['emprunts'=>$emprunts]);
+        return view('abonne.empruntsTermine', ['emprunts'=>$emprunts]);
     }
     
     

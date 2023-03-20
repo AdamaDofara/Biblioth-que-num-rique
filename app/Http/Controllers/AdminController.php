@@ -165,6 +165,20 @@ class AdminController extends Controller
         return view('admin.ouvrages', ['ouvrages'=>$ouvrages]);
     }
 
+    public function desactiverOuvrage($id){
+        $ouvrage = Ouvrage::find($id);
+        $ouvrage->statut = 0;
+        $ouvrage->update();
+        return back()->with("status", 'ouvrage '.$ouvrage->titre.' désactivé avec succès !');
+    }
+
+    public function activerOuvrage($id){
+        $ouvrage = Ouvrage::find($id);
+        $ouvrage->statut = 1;
+        $ouvrage->update();
+        return back()->with("status", 'ouvrage '.$ouvrage->titre.' activé avec succès !');
+    }
+
     public function getAbonne(){
         $abonnes = User::get();
         return view('admin.abonnes', ['abonnes'=>$abonnes]);
@@ -220,5 +234,17 @@ class AdminController extends Controller
         $user = User::find($id);
         $user->delete();
         return back()->with('status','Compte de '.$user->nom.' '.$user->prenom.' supprimeé avec succès');
+    }
+
+    public function Supprimer_categorie($id){
+        $categorie = Categorie::find($id);
+        $categorie->delete();
+        return back()->with('status','categorie '.$categorie->categorie.' supprimeé avec succès');
+    }
+
+    public function Supprimer_specialite($id){
+        $specialite = Specialite::find($id);
+        $specialite->delete();
+        return back()->with('status','specialite '.$specialite->specialite.' supprimeé avec succès');
     }
 }

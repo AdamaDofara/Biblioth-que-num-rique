@@ -98,14 +98,16 @@
                     </div> --}}
                     <div class="bottom-area d-flex px-3">
                         <div class="m-auto d-flex">
+                          @if (Session::get('user'))
                             <a href="/details/{{$ouvrage->id}}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                 <span><i class="ion-ios-eye"></i></span>
                             </a>
-                            @if (Session::get('user'))
+                          @endif
+                            {{-- @if (Session::get('user')) --}}
                                 <a href="/lire_ouvrage/{{$ouvrage->id}}" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                 <span><i class="ion-ios-book"></i></span>
                             </a>
-                            @endif
+                            {{-- @endif --}}
                             <a href="#" class="heart d-flex justify-content-center align-items-center ">
                                 <span><i class="ion-ios-heart"></i></span>
                             </a>

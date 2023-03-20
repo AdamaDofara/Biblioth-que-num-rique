@@ -57,7 +57,6 @@
                       @endif
                     </td>
                     <td>
-                      <button class="btn btn-outline-primary" onclick="{{--window.location='{{url('/modifier_abonne/'.$abonne->id)}}'--}}">Modifier</button>
                         <a href="{{url('/suprimer_compte/'.$auteur->id)}}'" class="btn btn-outline-danger" id="supprimer">Supprimer</a>
                       @if ($auteur->statut==0)
                         <a class="btn btn-outline-success" href="{{url('/activer_abonne/'.$auteur->id)}}">Activer</a>

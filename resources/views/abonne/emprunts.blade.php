@@ -42,7 +42,11 @@
                    <tr>
                     <td>{{$increment}}</td>
                     <td><img src="storage/image_files/{{$emprunts->ouvrage->photo}}" alt="rien"></td>
-                    <td>{{$emprunts->user->nom.' '.$emprunts->user->prenom}}</td>
+                    @if ($emprunts->user_id == "")
+                      <td>{{"null".' '."null"}}</td>
+                    @else
+                      <td>{{$emprunts->user->nom.' '.$emprunts->user->prenom}}</td>
+                    @endif
                     <td>{{$emprunts->ouvrage->titre}}</td>
                     <td>{{$emprunts->created_at}}</td>
                     <td>{{$emprunts->date_retour}}</td>

@@ -7,12 +7,12 @@
 {{-- {{$increment=1}} --}}
 {!! Form::hidden('', $increment=1) !!}
       <div class="card">
-        @if (Session::has('message'))
-          <div class ="alert alert-success">
-            {{Session::get('message')}}
-            {{Session::put('message', null)}}
-          </div>
-        @endif
+      @if (Session::has('status'))
+            <div class ="alert alert-success">
+              {{Session::get('status')}}
+              {{Session::put('status', null)}}
+            </div>
+      @endif
         <div class="card-body">
           <h4 class="card-title">Ouvrages</h4>
           <div class="row">
@@ -38,8 +38,16 @@
                      <td><img src="{{asset('storage/image_files/'.$ouvrage->photo)}}" alt="{{$ouvrage->product_image}}"></td> 
                     <td>{{$ouvrage->titre}}</td>
                     <td>{{$ouvrage->quantite}}</td>
-                    <td>{{$ouvrage->categorie->categorie}}</td>
-                    <td>{{$ouvrage->specialite->specialite}}</td>
+                    @if ($ouvrage->categorie_id == "")
+                      <td>null</td>
+                    @else
+                      <td>{{$ouvrage->categorie->categorie}}</td>
+                    @endif
+                    @if ($ouvrage->specialite_id == "") 
+                      <td>null</td>
+                    @else
+                      <td>{{$ouvrage->specialite->specialite}}</td>
+                    @endif
                     <td>
                       {!! Form::hidden('', $increment=$increment+1) !!}
                       @if ($ouvrage->statut==1)
@@ -49,12 +57,11 @@
                       @endif
                     </td>
                     <td>
-                      <button class="btn btn-outline-primary" onclick="{{--window.location='{{url('/modifier_ouvrage/'.$ouvrage->id)}}'--}}">Modifier</button>
                       <a href="#" class="btn btn-outline-danger" id="supprimer">Supprimer</a>
-                      @if ($ouvrage->satut==1)
-                        <button class="btn btn-outline-warning" onclick="{{--window.location='{{url('/desactiver_ouvrage/'.$ouvrage->id)}}'--}}">Désactiver</button>
+                      @if ($ouvrage->statut==1)
+                        <button class="btn btn-outline-warning" onclick="window.location='{{url('/desactiver_ouvrage/'.$ouvrage->id)}}'">Désactiver</button>
                       @else
-                        <button class="btn btn-outline-success" onclick="{{--window.location='{{url('/activer_ouvrage/'.$ouvrage->id)}}'--}}">Activer</button> 
+                        <button class="btn btn-outline-success" onclick="window.location='{{url('/activer_ouvrage/'.$ouvrage->id)}}'">Activer</button> 
                       @endif
                     </td>
                 </tr>

@@ -67,6 +67,7 @@
             <li class="nav-item active"><a href="{{URL::to('/Dashboard')}}" class="nav-link">Dashboard</a></li>
         @else
               <li class="nav-item active"><a href="{{URL::to('/authentification')}}" class="nav-link">Login</a></li>
+              <li class="nav-item active"><a href="{{URL::to('/inscription')}}" class="nav-link">S'inscrire</a></li>
         @endif
 	        </ul>
 	      </div>
