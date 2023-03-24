@@ -30,7 +30,17 @@ class AdminCommand extends Command
      * @return int
      */
     public function handle()
-    {
+    {   
+
+        $role = new Role();
+        $role->role = "ABONNE";
+        $$role->save();
+        $role1 = new Role();
+        $role1->role = "AUTEUR";
+        $$role1->save();
+        $role2 = new Role();
+        $role2->role = "ADMIN";
+        $$role2->save();
         
         $user = new User();
         $user->email = "admin1@gmail.com";
@@ -41,7 +51,7 @@ class AdminCommand extends Command
         $user->nationalite = "null";
         $user->numero_telephone = "null";
         $user->sexe =" null";
-        $user->role_id = 2;
+        $user->role_id = $role2->id;
 
         $user->save();
         echo"successfully executed";

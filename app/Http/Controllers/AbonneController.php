@@ -215,5 +215,28 @@ public function getEmpruntTermine(){
     
     
 }
+
+public function verifier_email(Request $req){
+    $email = $req->email;
+    $user =  User::where('email', $email)->first();
+    if (!$user->isEmpty) {
+        return $user;
+    } else {
+        return response->json(array(['result'=>"error"]));
+    }
+    
+}
+
+public function modification_mot_de_passe(Request $req){
+    $id = $req->id;
+    $password = $req->password;
+
+    $user = User::find($id);
+    $user->mot_de_passe = bcrypt($password);
+    $user->update();
+    return response()->json($user);
+
+}
+
 }
 

@@ -60,7 +60,8 @@
               </div>
             </div>
             <br>
-            @if (Session::get('user')->role->role !="ADMIN" && Session::get('user')->role->role !="AUTEUR")
+            @if(Session::get('user'))
+            @if (Session::get('user')->role->role !="AUTEUR")
                  <div class="row">
                 <div class="col">
                     {{-- <form class="form-group" action="App\Http\Controllers\AbonneController@sauver_emprunt" method="post">
@@ -100,6 +101,7 @@
                       {!! Form::close() !!}
                 </div>
             </div>
+            @endif
             @endif
            </div>
         </div>

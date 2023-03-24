@@ -79,8 +79,8 @@
 
        @foreach ($ouvrages as $ouvrage)
           <div class="col-md-6 col-lg-3 ftco-animate">
-            <div class="product" >
-                <a href="#" class="img-prod" style=""><img class="img-fluid" src="{{asset('storage/image_files/'.$ouvrage->photo)}}" alt="Colorlib Template" style="width:100%; height: 300px">
+            <div class="product" style="height:100px">
+                <a href="#" class="img-prod" style=""><img class="img-fluid" src="{{asset('storage/image_files/'.$ouvrage->photo)}}" alt="Colorlib Template" style="width:100%; height: 200px">
                     {{-- <span class="status">30%</span> --}}
                     <div class="overlay" ></div>
                 </a>
@@ -98,16 +98,12 @@
                     </div> --}}
                     <div class="bottom-area d-flex px-3">
                         <div class="m-auto d-flex">
-                          @if (Session::get('user'))
                             <a href="/details/{{$ouvrage->id}}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                 <span><i class="ion-ios-eye"></i></span>
                             </a>
-                          @endif
-                            {{-- @if (Session::get('user')) --}}
                                 <a href="/lire_ouvrage/{{$ouvrage->id}}" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                 <span><i class="ion-ios-book"></i></span>
                             </a>
-                            {{-- @endif --}}
                             <a href="#" class="heart d-flex justify-content-center align-items-center ">
                                 <span><i class="ion-ios-heart"></i></span>
                             </a>

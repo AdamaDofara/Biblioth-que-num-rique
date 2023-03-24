@@ -32,6 +32,8 @@ Route::post('/ajout_emprunt', [AbonneController::class, 'sauver_emprunt']);
 Route::get('/rendre/{id}', [AbonneController::class, 'ramener_ouvrage']);
 Route::get('/emprunts/Encours', [AbonneController::class, 'getEmpruntEncours']);
 Route::get('/emprunts/Termine', [AbonneController::class, 'getEmpruntTermine']);
+Route::post('/verifier_email', [AbonneController::class, 'verifier_email']);
+Route::post('/modifier_password', [AbonneController::class, 'modification_mot_de_passe']);
 
 // ***************Admin route***********
 Route::get('/ajouter_ouvrage', [AdminController::class, 'ouvrage_form']);
